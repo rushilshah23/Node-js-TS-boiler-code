@@ -1,0 +1,19 @@
+
+
+services:
+  demo_1_server:
+    image: node:20-alpine3.19
+    container_name: demo_1_server
+    networks:
+      - demo_1_network
+    ports:
+      - "4000:4000" 
+    volumes:
+      - .:/usr/src/app # Bind your local 'server' directory to the container
+    stdin_open: true # Keep the container interactive
+    tty: true        # Allocate a pseudo-TTY for the container
+    command: /bin/sh # Start a shell in the container for development
+
+networks:
+  demo_1_network:
+    name: demo_1_network # Explicitly name the network
